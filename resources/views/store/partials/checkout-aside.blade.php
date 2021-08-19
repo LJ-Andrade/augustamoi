@@ -44,6 +44,8 @@
             <td></td>
             <td class="text-lg text-medium txtR dont-break"><span class="total">
             Total $ <b>{{ $activeCart['cartTotal'] }}</b></span></td>
+            <input class="Hidden" type="text" name="cartTotal" value="{{ $activeCart['cartTotal'] }}">
+            {{-- {{ dd($activeCart['cartTotal'])}} --}}
         </tr>
         </table>
         <div class="text-right finish-checkout-btn">

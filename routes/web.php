@@ -135,7 +135,8 @@ Route::group(['prefix'=> 'tienda', 'middleware' => 'active-customer'], function(
         // Process Checkout
         Route::post('finalizando-compra', ['as' => 'store.processCheckout', 'uses' => 'Store\StoreController@processCheckout']);
         // Checkout Success
-        Route::get('compra-exitosa/{cartId}', ['as' => 'store.checkout-success', 'uses' => 'Store\StoreController@checkoutSuccess']);
+        // Route::get('compra-exitosa/{cartId}', ['as' => 'store.checkout-success', 'uses' => 'Store\StoreController@checkoutSuccess']);
+        Route::get('compra-exitosa/{cartId}/{cartTotal}', ['as' => 'store.checkout-success', 'uses' => 'Store\StoreController@checkoutSuccess']);
         // Update Cart Payment and Shipping Methods
         Route::post('updateCartPayment', ['as' => 'store.updatePaymentAndShipping', 'uses' => 'Store\CartsController@updatePaymentAndShipping']);
         // Check discount coupon

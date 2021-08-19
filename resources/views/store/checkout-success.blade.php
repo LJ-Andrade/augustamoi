@@ -19,7 +19,7 @@
                         Te contactaremos para que realices el pago y coordinar juntos detalles del despacho. <br> 
                         Cualquier duda te dejamos nuestro <b> WhatsApp 1133212292</b>
                     </p>
-                    
+                    {{-- {{ dd($cartTotal) }} --}}
                     <div class="padding-top-1x padding-bottom-1x">
                         <a class="btn btn-outline-primary btn-sm" href="{{ url('tienda/descargar-comprobante', [$cart->id, 'stream']) }}" target="_blank"><i class="icon-eye"></i> Ver Comprobante</a>
                         <a class="btn btn-outline-primary btn-sm" href="{{ url('tienda/descargar-comprobante', [$cart->id, 'download']) }}" target="_blank"><i class="icon-download"></i> Descargar Comprobante</a>
@@ -36,7 +36,7 @@
 	@include('store.components.bladejs')
     <script>
 
-        fbq('track', 'Purchase');
+        fbq('track', 'Purchase', { currency: "ARS", value: {{ $cartTotal}} });
 
         // Prevent backbtn
         history.pushState(null, null, location.href);

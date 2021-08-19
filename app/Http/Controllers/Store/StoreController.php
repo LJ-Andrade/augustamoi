@@ -46,7 +46,7 @@ class StoreController extends Controller
     }
 
     public function index(Request $request)
-    {   
+    {  
         $hasParams = '1';
         $pagination = $this->getSetPaginationCookie($request->get('results'));
         $order = 'DESC';
@@ -371,7 +371,6 @@ class StoreController extends Controller
 
     public function processCheckout(Request $request)
     {
-        // dd($request->all());
         $cart = Cart::findOrFail($request->cart_id);  
 
         // Check if customer has required data completed
@@ -454,19 +453,24 @@ class StoreController extends Controller
         }    
     
         // return back()->with('message','Su compra se ha registrado. Muchas gracias !.');
+        $cartTotal = 0;
+        if(isset($request->cartTotal)) {
+            $cartTotal = $request->cartTotal;
+        }
+
+        return redirect()->route('store.checkout-success', [ 'cartId' => $cart->id, 'cartTotal' => $cartTotal ]);
         
-        return redirect()->route('store.checkout-success', $cart->id);
-        // return view('store.checkout-success')
-        //     ->with('cart', $cart);
     }
 
-    public function checkoutSuccess($cartId)
+    public function checkoutSuccess($cartId, $cartTotal)
     {
         $cart = Cart::find($cartId);
         
         if( $cart && auth()->guard('customer')->user()->id == $cart->customer->id ) 
         {
-            return view('store.checkout-success')->with('cart', $cart);
+            return view('store.checkout-success')
+                ->with('cart', $cart)
+                ->with('cartTotal', $cartTotal);
         } else {
             return view('errors.500');
         }

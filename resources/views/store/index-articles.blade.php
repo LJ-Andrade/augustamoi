@@ -18,8 +18,9 @@
                                     Ver producto !
                                 </div>
                             
-                            @php($difference = now()->diff($article->created_at)->days) {{-- Check if article has less than 10 days.--}}
-                            @if($difference < 10)
+                            @php($difference = now()->diff($article->created_at)->days) 
+                            {{-- Check if article has less than 30 days.--}}
+                            @if($difference <= 30)
                                 <div class="overlay-ribbon bottom-right-ribbon">
                                     <div class="triangle"></div>
                                     <div class="text">NUEVO! </div>
