@@ -21,4 +21,9 @@ class Payment extends Model
     {
         return $query->where('name','LIKE', "%$name%");
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', '=', '1');
+    }
 }

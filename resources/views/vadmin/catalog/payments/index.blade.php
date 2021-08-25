@@ -65,7 +65,9 @@
 						<th>Descripción</th>
 						<th>Descuento</th>
 						<th>Recargo</th>
-						<th>Fecha de Creación</th>
+						<th>Estado</th>
+						{{-- <th>Fecha de Creación</th> --}}
+						
 					@endslot
 
 					@slot('tableContent')
@@ -94,7 +96,16 @@
 										-
 									@endif
 								</td>
-								<td class="w-200">{{ transDateT($item->created_at) }}</td>
+								{{-- <td class="w-200">{{ transDateT($item->created_at) }}</td> --}}
+								
+								<td class="w-50 pad0 centered">
+									<label class="switch">
+										<input class="UpdateStatus switch-checkbox" type="checkbox" 
+										data-model="Payment" data-id="{{ $item->id }}"
+										@if($item->status == '1') checked @endif>
+										<span class="slider round"></span>
+									</label>
+								</td>
 							</tr>						
 						@endforeach
 					@endif

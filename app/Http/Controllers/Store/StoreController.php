@@ -361,7 +361,7 @@ class StoreController extends Controller
 
         $geoprovs = GeoProv::pluck('name','id');
         $shippings = Shipping::orderBy('name', 'ASC')->get();
-        $payment_methods = Payment::orderBy('name', 'ASC')->get();
+        $payment_methods = Payment::orderBy('name', 'ASC')->active()->get();
         
         return view('store.checkout-last')
             ->with('geoprovs', $geoprovs)

@@ -452,7 +452,7 @@ window.addArticleToFavs = function (route, favid, articleid, action, displayButt
                     case 'show':
                         displayButton.removeClass('fav-icon-nofav');
                         displayButton.addClass('fav-icon-isfav');
-                        toast_success('Ok!', 'Producto agregado a favoritos', 'bottomCenter', '', 1000);
+                        toast_success('<i class="fas fa-check"></i>', 'Producto agregado a favoritos', 'bottomCenter', '', 122000);
                         break;
                     case 'none':
                         console.log('Actualizado - Sin Acción');
@@ -463,7 +463,7 @@ window.addArticleToFavs = function (route, favid, articleid, action, displayButt
             } else if (data.response == true && data.result == 'removed') {
                 displayButton.addClass('fav-icon-nofav');
                 displayButton.removeClass('fav-icon-isfav');
-                toast_success('Ok!', 'Producto eliminado de favoritos', 'bottomCenter', '', 1000);
+                toast_success('<i class="fas fa-times"></i>', 'Producto eliminado de favoritos', 'bottomCenter', '', 1000);
             }
             setFavsTotalIcon(data.favsCount);
         },

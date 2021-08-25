@@ -67,6 +67,8 @@
 							@if($activeCart['cart']->payment_method_id == null)
 							<option selected disabled>Seleccione una forma de pago</option>
 							@endif
+							
+							
 							@foreach($payment_methods as $payment)
 							<option  value="{{ $payment->id }}" @if($payment->id == $activeCart['cart']->payment_method_id ) selected @endif>
 									{{ $payment->name }} @if($payment->percent > 0) - (Recargo %{{ $payment->percent }})@endif
@@ -241,7 +243,7 @@
 			<div class="back-to-store"><a href="{{ url('tienda') }}"><i class="icon-arrow-left"></i> Volver a la tienda</a></div>
 		</div> --}}
 	</div> {{-- / Container --}}
-	<div id="Error"></div>
+	{{-- <div id="Error"></div> --}}
 @endsection
 
 @section('scripts')
