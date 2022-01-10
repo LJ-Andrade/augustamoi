@@ -2,7 +2,7 @@
 	display: none
 	height: 60px
 	position: relative
-	padding: 10px 10px 
+	padding: 10px 10px
 	.open-btn
 		@include flex-center
 		height: 40px
@@ -14,7 +14,7 @@
 		img
 			height: 50px
 			max-width: 100%
-	
+
 @media (max-width: 768px)
 	.navbar-mobile
 		display: block
@@ -72,13 +72,12 @@
 	.bottom
 		-webkit-transform: translateY(-12px) translateX(0) rotate(-45deg)
 
-
 //
 // |--------------------------------------------------------------------------
 // | Full Screen Navigation 
 // |--------------------------------------------------------------------------
 //
-	
+
 .navfull
 	background-color: #fff
 	position: fixed
@@ -106,10 +105,10 @@
 					border-bottom: 1px solid #383838
 					color: #383838
 					&:last-child
-						border: 0 
+						border: 0
 					.details
 						color: $lblue
-				
+
 		.foot-info
 			// padding: 180px 20px 120px
 			padding: 20px
@@ -120,8 +119,8 @@
 			color: #383838
 			p
 				margin-bottom: 8px
-			li 
-				a 
+			li
+				a
 					border-radius: 100%
 					border: 1px solid $lblue
 					color: $lblue
@@ -129,7 +128,7 @@
 					width: 40px
 					padding: 8px 12px
 					font-size: 0.8rem
-				
+
 @media screen and (max-height: 700px)
 	.navfull .menu-content
 		.foot-info
@@ -137,14 +136,13 @@
 			bottom: auto
 			margin-top: 40px
 
-
 	.social
 		height: 100%
 		@include flex-center()
 		position: absolute
 		left: 10px
 		.inner
-			ul li 
+			ul li
 				text-align: center
 				margin: 10px 0
 				height: 30px
@@ -225,8 +223,7 @@
 	.bottom
 		-webkit-transform: translateY(-12px) translateX(0) rotate(-45deg)
 		.bottom
-		width: 100%
-
+			width: 100%
 
 //
 // |--------------------------------------------------------------------------
@@ -245,7 +242,7 @@
 	z-index: 9000
 	font-weight: 300 !important
 	font-size: 1rem
-	&.navbar-stuck 
+	&.navbar-stuck
 		position: fixed
 		z-index: 9010
 	.site-branding
@@ -283,7 +280,7 @@
 				.account
 					img
 						border-radius: 50%
-	
+
 .dropdown-product-item > .dropdown-product-info
 	max-width: 148px
 	width: 148px
@@ -306,11 +303,11 @@
 .top-info
 	padding-bottom: 20px
 
-.toolbar 
+.toolbar
 	.account > .toolbar-dropdown
 		margin-left: -170px
 		top: 53px
-		border-radius: 0 
+		border-radius: 0
 		border: 1px solid #ccc
 		background-color: #f9f9f9
 		box-shadow: -2px 8px 10px -2px rgba(0, 0, 0, 0.55)
@@ -327,7 +324,7 @@
 				background-color: #f9f9f9
 
 @media (max-width: 1070px)
-	.toolbar 
+	.toolbar
 		.tools
 			display: table-cell
 			vertical-align: middle
@@ -352,17 +349,15 @@
 	.toolbar .cart > .toolbar-dropdown
 		top: 100px
 
-.navbar-sticky	
-	.toolbar 
+.navbar-sticky
+	.toolbar
 		white-space: nowrap
-		.inner 
+		.inner
 			@include flex-center
 			padding: 5px
 			.tools
 				height: auto
 				display: inline-flex
-
-
 
 @media (min-width: 481px)
 	.toolbar .cart > .toolbar-dropdown
@@ -378,7 +373,6 @@
 		position: fixed
 		top: 150px
 		left: 10px !important
-
 
 @media (max-width: 710px)
 	.navbar
@@ -415,7 +409,6 @@
 				&:hover
 					cursor: pointer
 
-
 @media (min-width: 852px)
 	.toolbar
 		.text-links
@@ -445,3 +438,10 @@
 // 			a
 // 				margin: 0 15px
 // 				white-space: nowrap
+
+// ------- Pre Top Bar ---------
+.pre-topbar
+	background-color: #000
+	color: #fff
+	padding: 5px 10px
+	min-height: 32px

@@ -12,12 +12,12 @@
 			<h1>Configuraciones Generales</h1>
             <hr class="softhr">
             <div class="row">
+                {!! Form::open(['route' => 'updateSettings', 'method' => 'POST']) !!}	
+                {{ csrf_field() }}
                 <div class="container-fluid">
                     <div class="col-md-3">
                         <div class="card">
                             <div class="card-block">
-                                {!! Form::open(['route' => 'updateSettings', 'method' => 'POST']) !!}	
-                                    {{ csrf_field() }}
                                     <div class="form-group">
                                         <label>Cantidad de prendas</label>
                                         <input class="form-control" type="text" name="reseller_min" value="{{ $settings->reseller_min }}" placeholder="Ingrese mínimo">
@@ -38,16 +38,16 @@
                                         <label for="">Teléfono</label>
                                         <input class="form-control" type="text" name="phone1" value="{{ $settings->phone1 }}">
                                     </div>
-                                    <input class="btnSm btnBlue" type="submit" value="Actualizar">
-                                {!! Form::close() !!}
+                                    {{-- <input class="btnSm btnBlue" type="submit" value="Actualizar"> --}}
+                             
                             </div>
                         </div>
                     </div>
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-block">
-                                {!! Form::open(['route' => 'updateSettings', 'method' => 'POST', 'class' => '']) !!}	
-                                    {{ csrf_field() }}
+                                {{-- {!! Form::open(['route' => 'updateSettings', 'method' => 'POST', 'class' => '']) !!}	
+                                    {{ csrf_field() }} --}}
                                     <label>
                                         <a data-toggle="modal" data-target="#GaHelpModal">
                                             <i class="far fa-question-circle"></i>
@@ -55,12 +55,34 @@
                                         Código de Google Analytics
                                     </label>
                                     <textarea class="form-control" name="google_analytics" style="margin-bottom: 5px; min-height: 200px">{{ $settings->google_analytics }}</textarea>
-                                    <input class="btnSm btnBlue" type="submit" value="Actualizar">
-                                {!! Form::close() !!}
+                                  
+                                {{-- {!! Form::close() !!} --}}
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="form-group">
+                                    <label for="">
+                                        <a data-toggle="modal" data-target="#PreTopBarHelpModal">
+                                            <i class="far fa-question-circle"></i>
+                                        </a>
+                                    Texto rotativo en barra superior</label>
+                                    <input class="form-control" type="text" name="pre_topbar_text" value="{{ $settings->pre_topbar_text }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-block" style="text-align: center">
+                                <input class="btnSm btnBlue" style="padding: 10px 40px" type="submit" value="Actualizar">      
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            {!! Form::close() !!}
             </div>
                   
             </div>
@@ -115,6 +137,25 @@
             </div>
         </div>
     </div>
+
+    {{-- PreTopbar Help Modal --}}
+    <div class="modal fade" id="PreTopBarHelpModal" tabindex="-1" role="dialog" aria-labelledby="PreTopBarHelpModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-body">
+                <h5 class="modal-title"><b>Banner con texto rotativo</b></h5>
+                <br>
+                El texto ingresado aquí aparecerá en una banner rotativo en la parte superior de la tienda, 
+                haciendo una animación de recorrido horizontal. <br><br>
+                Para que no aparezca el banner rotativo simplemente hay que dejár vacío este campo de texto.
+            </div>
+            <div class="modal-footer" style="border-top: 0">
+                <button type="button" data-dismiss="modal" class="btn btnMain">Entendido!</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
 
 @endsection
 

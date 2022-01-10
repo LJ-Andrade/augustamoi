@@ -1,4 +1,4 @@
-@extends('vadmin.partials.invoice-excel')
+@extends('vadmin.partials.invoizce-excel')
 
 @section('content')
     <table>

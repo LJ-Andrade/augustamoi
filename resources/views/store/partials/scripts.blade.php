@@ -122,5 +122,17 @@
         });
 
     }
+
+    // Pre Top Bar Marquee 
+
+    $(function () {
+        $('.marquee').marquee({
+            duration: 15000,
+            duplicated: true,
+            gap: window.innerWidth, 
+            direction: 'left',
+            pauseOnHover: true
+        });
+    });
     
 </script>
