@@ -1,4 +1,4 @@
-@extends('vadmin.partials.invoizce-excel')
+@extends('vadmin.partials.invoice-excel')
 
 @section('content')
     <table>
@@ -12,9 +12,9 @@
             <th>P.U.</th>
             <th>P.T.</th>
             <th>Marca</th>
-
         </tr>
-        @foreach($orders as $order)
+        @foreach ($orders as $order)
+            {{-- {{ dd($order) }} --}}
             <tr>
                 <td>{{ $order['article_code'] }}</td>
                 <td>{{ $order['article_name'] }}</td>
@@ -22,8 +22,8 @@
                 <td>{{ $order['color'] }}</td>
                 <td>{{ $order['tela'] }}</td>
                 <td>{{ $order['quantity'] }} </td>
-                <td>{{ $order['price'] }}</td> 
-                <td>{{ $order['price'] * $order['quantity'] }}</td> 
+                <td>{{ $order['price'] }}</td>
+                <td>{{ $order['price'] * $order['quantity'] }}</td>
                 <td>{{ $order['brand'] }} </td>
             </tr>
         @endforeach

@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-xs-12  col-md-4 col-lg-4 column bussines-data">
                 <ul>
-                    <li class="title brand"> <img src="{{ asset('webimages/web/app-logo.png') }}" alt="Augustamoi"> </li>
+                    <li class="title brand"> <img src="{{ asset('webimages/web/app-logo.png') }}" alt="Augustamoi">
+                    </li>
                     <li> <i class="fas fa-map-marker-alt"></i> Buenos Aires - Argentina </li>
                     <li> <i class="fas fa-phone-volume"></i> (+54) 11-3321-2292 </li>
                     <li> <i class="fas fa-paper-plane"></i> venta@augustamoi.com </li>
@@ -11,7 +12,7 @@
             </div>
             <div class="col-4 col-md-2 col-lg-2 column">
                 <ul>
-                    @if(Auth::guard('customer')->check())
+                    @if (Auth::guard('customer')->check())
                         <li class="title">MI CUENTA</li>
                         <li><a href="{{ url('tienda/cuenta') }}">Cuenta</a></li>
                         <li><a href="{{ url('tienda/pedidos') }}">Mis Pedidos</a></li>
@@ -38,14 +39,14 @@
                     <li><a href="{{ url('tienda?categoria=58') }}">Para Arriba</a></li>
                     <li><a href="{{ url('tienda?categoria=32') }}">Vestidos</a></li>
                 </ul>
-                
+
             </div>
             <div class="col-12 col-md-2 col-lg-2 column">
                 <ul>
                     <li class="title">SHOW ROOM</li>
-                    <li>&bull; Venta Mayorísta</li>
-                    <li>&bull; Showroom Caballito</li>
-                    <li>&bull; Solo con cita previa</li>
+                    <li>Helguera 755, PB, Flores</li>
+                    <li>Lunes a Viernes</li>
+                    <li>de 9 a 16 hs.</li>
                 </ul>
             </div>
         </div>
@@ -55,14 +56,17 @@
         <div class="row inner">
             <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="copyright">
-                    © {{ date('Y') }} - Desarrollado por <a href="https://vimanastudio.com.ar" target="_blank">&nbsp; Vimana Studio </a>
+                    © {{ date('Y') }} - Desarrollado por <a href="https://vimanastudio.com.ar"
+                        target="_blank">&nbsp; Vimana Studio </a>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="horizontal-list">
                     <ul>
-                        <li class="round-icon"><a href="https://www.facebook.com/augustamoimayorista" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="round-icon"><a href="https://www.instagram.com/augusta_moi/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li class="round-icon"><a href="https://www.facebook.com/augustamoimayorista"
+                                target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="round-icon"><a href="https://www.instagram.com/augusta_moi/" target="_blank"><i
+                                    class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
