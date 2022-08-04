@@ -8,7 +8,7 @@ class StoreServiceProvider extends ServiceProvider
     
     public function boot(View $view)
     {
-        //View::composer(['store'], 'App\Http\ViewComposers\ShowCatTagsAtrib');
+        //View::composer(['store'], 'App\Http\ViewComposes\ShowCatTagsAtrib');
     }
     
     public function register()
@@ -38,6 +38,6 @@ class StoreServiceProvider extends ServiceProvider
             'store.reseller-policy',
             'store.cartdetail',
             'store.wishlist'
-        ], 'App\Http\ViewComposers\StoreComposer');
+        ], 'App\Http\ViewComposes\StoreComposer');
     }
 }
