@@ -77,7 +77,7 @@
         <div class="col-xs-12 col-md-6 form-group">
             {!! Form::label('extra_info_1', 'Información extra') !!}
             {!! Form::text('extra_info_1', null, ['class' => 'form-control', 'placeholder' => '', 
-            'required' => '', 'maxlength' => '100']) !!}
+            'maxlength' => '100']) !!}
         </div>
         
         <div class="col-xs-12 variants">
