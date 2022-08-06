@@ -54,11 +54,24 @@
                         <div class="footer">
                             <div class="col-price pad0">
                                 {{-- <del>$ {{ $article->reseller_price + 0 }}</del>  --}}
-                                @if(Auth::guard('customer')->check())
+                               
+                               {{-- Mostrar precios solo cuando está logueado --}}
+                                {{-- @if(Auth::guard('customer')->check())
                                 <span class="price">
                                     $ {{ calcValuePercentNeg($article->reseller_price, $article->reseller_discount + 0) }}
                                 </span>
+                                @endif --}}
+
+                                @if($article->extra_info_1)
+                                    <div>
+                                        {{ $article->extra_info_1 }}
+                                    </div>
                                 @endif
+
+                                <span class="price">
+                                    $ {{ calcValuePercentNeg($article->reseller_price, $article->reseller_discount + 0) }}
+                                </span>
+
                             </div>
                             <div class="col-add pad0">
                                 <a href="{{ url('tienda/articulo/'.$article->id) }}">

@@ -71,7 +71,14 @@
             {!! Form::label('textile', 'Textil') !!}
             {!! Form::text('textile', null, ['class' => 'form-control', 'placeholder' => 'Tipo de tela', 
             'required' => '', 'maxlength' => '50']) !!}
-        </div>           
+        </div> 
+        
+        {{--  Extra Info  --}}
+        <div class="col-xs-12 col-md-6 form-group">
+            {!! Form::label('extra_info_1', 'Información extra') !!}
+            {!! Form::text('extra_info_1', null, ['class' => 'form-control', 'placeholder' => '', 
+            'required' => '', 'maxlength' => '100']) !!}
+        </div>
         
         <div class="col-xs-12 variants">
             <div class="variants-selectors">

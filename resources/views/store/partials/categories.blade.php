@@ -2,12 +2,14 @@
 	<div class="container">
 		<div class="row">
 			<ul id="SliCategories">
-				{{-- {{ dd($categories)}} --}}
+				
 				@foreach($categories as $category)
 					@if($category->activeArticles->count() > '0')
-						<a href="{{ route('store', 'categoria='. $category->id)  }}">
-							<span class="styled-item"> {{ $category->name }}</span>
-						</a>
+						<li class="inline-item">
+							<a href="{{ route('store', 'categoria='. $category->id)  }}">
+								{{ $category->name }}
+							</a>
+						</li>
 					@endif
 				@endforeach
 				
@@ -15,7 +17,7 @@
 				<li class="styled-item"><a href="{{ route('store', 'categoria=59') }}">Para abajo</a></li>
 				<li class="styled-item"><a href="{{ route('store', 'categoria=32') }}">Vestidos</a></li> --}}
 
-				<li class="stand-alone-item" onclick="OpenSearchField()">
+				<li class="inline-item stand-alone-item" onclick="OpenSearchField()">
 					<i class="icon-search"></i>
 				</li>
 				{{-- {!! Form::open(['route' => 'store', 'method' => 'GET', 'class' => 'input-group form-group search-input']) !!}

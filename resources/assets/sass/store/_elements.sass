@@ -357,19 +357,21 @@
 	.container
 		position: relative
 		padding: 16px 10px
-		@include flex-center
 		ul
-			display: inline-flex
-			.styled-item
-				padding: 5px 40px
-				float: left
-				margin: 0 10px
+			line-height: 2.5rem
+			li.inline-item
+				display: inline
 				border: 1px solid #fff
-				float: left
-				@include transition(0.2s)
-				max-height: 38px
-				white-space: nowrap
+				padding: 5px 6px
+				margin: 5px
+				a
+					color: #fff
+			.styled-item
+				padding: 5px 6px
+				margin: 5px
+				border: 1px solid #fff
 				color: #fff
+				@include transition(0.2s)
 				span
 					text-transform: uppercase
 					color: #fff
