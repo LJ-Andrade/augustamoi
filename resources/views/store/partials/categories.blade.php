@@ -1,6 +1,6 @@
 <div class="container-fluid square-link-items">
 	<div class="container">
-		<div class="row">
+		<div class="row justify-content-center">
 			<ul id="SliCategories">
 				
 				@foreach($categories as $category)

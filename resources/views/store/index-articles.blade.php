@@ -56,21 +56,18 @@
                                 {{-- <del>$ {{ $article->reseller_price + 0 }}</del>  --}}
                                
                                {{-- Mostrar precios solo cuando está logueado --}}
-                                {{-- @if(Auth::guard('customer')->check())
+                                @if(Auth::guard('customer')->check())
                                 <span class="price">
                                     $ {{ calcValuePercentNeg($article->reseller_price, $article->reseller_discount + 0) }}
                                 </span>
-                                @endif --}}
+                                @endif
 
-                                @if($article->extra_info_1)
+                                {{-- @if($article->extra_info_1)
                                     <div>
                                         {{ $article->extra_info_1 }}
                                     </div>
-                                @endif
+                                @endif --}}
 
-                                <span class="price">
-                                    $ {{ calcValuePercentNeg($article->reseller_price, $article->reseller_discount + 0) }}
-                                </span>
 
                             </div>
                             <div class="col-add pad0">
