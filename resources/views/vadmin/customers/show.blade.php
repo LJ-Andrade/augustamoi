@@ -6,7 +6,7 @@
 		@slot('breadcrums')
 			<li class="breadcrumb-item"><a href="{{ url('vadmin')}}">Inicio</a></li>
             <li class="breadcrumb-item"><a href="{{ route('customers.index')}}">Clientes</a></li>
-            <li class="breadcrumb-item active">Perfil de <b>{{ $customer->customername }}</b></li>
+            <li class="breadcrumb-item active">Perfil de cliente: <b>{{ $customer->name  }} {{ $customer->surname }}</b></li>
 		@endslot
 		@slot('actions')
 		@endslot
@@ -17,13 +17,13 @@
     <div class="row">
         @component('vadmin.components.container')
         @slot('title')
-                <span style="color: #ada8a8">Perfil | </span>{{ $customer->name }} <br>
+                <span style="color: #ada8a8"></span>{{ $customer->name }} {{ $customer->surname }}<br>
                 <span class="small"> Compras realizadas: {{ $customer->staticstics('totalCarts')}} | </span>  
                 <span class="small"> Prendas compradas: {{ $customer->staticstics('totalItems')}} | </span>
                 <span class="small"> Total gastado: $ {{ $customer->staticstics('totalSpent')}}<br> </span>
             @endslot
             @slot('content')
-                <div class="col-md-3">
+                {{-- <div class="col-md-3">
                     <div class="round-image-card">
                         <div class="inner">
                             <div class="image">
@@ -32,26 +32,14 @@
                         </div>
                     </div>
                     
-                    {{-- EDIT BUTTON --}}
-                    {{-- <a href="{{ url('vadmin/customers/'. $customer->id .'/edit') }}" class="btn btnMain"><i class="icon-pencil2"></i> Editar</a> --}}
-
-
-                    {{-- <div class="ActionContainer Hidden">
-                        <hr class="softhr">
-                        {!! Form::open(['url' => 'vadmin/updateCustomerAvatar', 'method' => 'POST', 'class' => 'UpdateAvatarForm Hidden', 'files' => true]) !!}
-                            {{ csrf_field() }}
-                            <input type="file" name="avatar" class="Hidden" id="ImageInput">
-                            <input type="hidden" name="id" value="{{ $customer->id }}">
-                            <input type="submit" class="btn btnGreen" id="ConfirmChange" value="Confirmar">
-                        {!! Form::close() !!}
-                    </div> --}}
-                </div>
+                   
+                </div> --}}
                 <div class="col-md-9">
                     <div class="column-data">
-                        <div class="row item">
+                        {{-- <div class="row item">
                             <div class="label"><b>Nombre de usuario: </b></div>
                             <span class="data">{{ $customer->username }}</span>
-                        </div> <br>
+                        </div> <br> --}}
                         <div class="row item">
                             <div class="label"><b>Nombre y apellido: </b></div>
                             <span class="data">{{ $customer->name }} {{ $customer->surname }}</span>

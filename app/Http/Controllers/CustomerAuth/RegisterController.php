@@ -67,13 +67,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
-            'username' => 'required|string|max:20|unique:customers',
+            // 'username' => 'required|string|max:20|unique:customers',
             'email' => 'required|string|email|max:255|unique:customers',
             'phone' => 'required|string|min:4',
             'password' => 'required|string|min:6|confirmed',
         ], [
-            'username.required' => 'Debe ingresar un nombre de usuario',
-            'username.unique' => 'Ya hay un usuario registrado con este nombre',
+            // 'username.required' => 'Debe ingresar un nombre de usuario',
+            // 'username.unique' => 'Ya hay un usuario registrado con este nombre',
             'email.required' => 'Debe ingresar un email',
             'email.email' => 'La dirección de email parece inválida',
             'email.unique' => 'Ya hay un usuario registrado con el mismo email',
@@ -116,7 +116,7 @@ class RegisterController extends Controller
         return Customer::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
-            'username' => $data['username'],
+            'username' => $data['email'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'status' => $status,

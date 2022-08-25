@@ -20,12 +20,18 @@
 				<a href="{{ route('customers.create') }}" class="btn btnMain"><i class="icon-plus-round"></i>  Nuevo Cliente</a>
 				<button id="SearchFiltersBtn" class="btn btnMain"><i class="icon-ios-search-strong"></i></button>
 				@if(Auth::guard('user')->user()->role <= 2)
+				
+				{{-- Edit OLD--}}
+				{{-- <button class="EditBtn btn btnGreen Hidden"><i class="icon-pencil2"></i> Editar</button>
+				<input id="EditId" type="hidden"> --}}
+
 				{{-- Edit --}}
-				<button class="EditBtn btn btnGreen Hidden"><i class="icon-pencil2"></i> Editar</button>
+				<button onclick="listAction({ action: 'edit', id: $('#EditId').val(), model: $('#ModelName').val() })"
+					class="ListActionBtn EditBtn btn btnMain Hidden" data-visibleif="1"><i class="icon-pencil2"></i> Editar</button>
 				<input id="EditId" type="hidden">
 
 				{{-- Delete --}}
-				<button class="DeleteBtn btn btnRed Hidden"><i class="icon-bin2"></i> Eliminar</button>
+				<button class="ListActionBtn DeleteBtn btn btnRed Hidden" data-visibleif=">0"><i class="icon-bin2"></i> Eliminar</button>
 				@endif
 			</div>
 		@endslot
@@ -68,6 +74,7 @@
 					 <a href="{{ route('vadmin.customerInfo') }}" data-toggle="tooltip" title="Ver Info de Clientes" class="icon-container black">
 						<i class="fas fa-eye"></i>
 					</a> 
+					
 				@endslot	
 				@slot('title', 'Clientes')
 				@slot('tableTitles')
@@ -79,7 +86,7 @@
 								<span class="custom-control-description"></span>
 							</label>
 						</th>
-						<th>Nombre (Usuario)</th>
+						<th>Nombre</th>
 						<th>Email</th>
 						<th>Registro</th>
 						<th style="min-width: 150px">Tipo</th>
@@ -102,7 +109,7 @@
 									</label>
 								</td>
 								@endif
-								<td class="show-link"><a href="{{ url('vadmin/customers/'.$item->id) }}"> {{ $item->name }} {{ $item->surname}} ({{ $item->username }})</a></td>
+								<td class="show-link"><a href="{{ url('vadmin/customers/'.$item->id) }}"> {{ $item->name }} {{ $item->surname}}</a></td>
 								<td>{{ $item->email }}</td>
 								<td>{{ transDateT($item->created_at) }}</td>
 								<td>

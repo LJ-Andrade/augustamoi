@@ -132,6 +132,7 @@ Route::group(['prefix'=> 'tienda', 'middleware' => 'active-customer'], function(
         Route::post('checkout-items', ['as' => 'store.checkout-set-items', 'uses' => 'Store\StoreController@checkoutSetItems']);
         // Go to Checkout Last
         Route::get('finalizando-compra', ['as' => 'store.checkoutLast', 'uses' => 'Store\StoreController@checkoutLast']);
+        Route::get('finalizando-compra', ['as' => 'store.checkout-last', 'uses' => 'Store\StoreController@checkoutLast']);
         // Process Checkout
         Route::post('finalizando-compra', ['as' => 'store.processCheckout', 'uses' => 'Store\StoreController@processCheckout']);
         // Checkout Success

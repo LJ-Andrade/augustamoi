@@ -35,7 +35,7 @@
                         <td class="max-text">{{ $item->name }} {{ $item->surname }}<br>({{ groupTrd($item->group) }}) <br>{{ $item->cuit }}</td>
                         <td>{{ $item->email }}</td>
                         <td style="max-width: 100px">@if($item->address != '') {{ $item->address }} <br>({{$item->cp }}) @endif</td>
-                        <td>@if($item->geoprov['name'] != '') {{ $item->geoprov['name'] }} <br>({{ $item->geoloc['name'] }}) @endif</td>
+                        <td>@if($item->geoprov && $item->geoprov['name'] != '') {{ $item->geoprov['name'] }} <br>({{ $item->geoloc['name'] }}) @endif</td>
                         <td>{{ $item->phone }} <br> {{ $item->phone2 }}</td>
                         <td>@if($item->staticstics('totalCarts') != 0) {{ $item->staticstics('totalCarts') }} @endif</td>
                         <td>@if($item->staticstics('totalItems') != 0) {{ $item->staticstics('totalItems') }} @endif</td>

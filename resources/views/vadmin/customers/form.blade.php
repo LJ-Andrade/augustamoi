@@ -2,10 +2,10 @@
     <div class="row">
         <div class="col-lg-4 col-md-6">
             <input type="hidden" name="group" value="3">
-            <div class="form-group">
+            {{-- <div class="form-group">
                 {!! Form::label('username', 'Nombre de Usuario') !!}
                 {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del usuario', 'required' => '']) !!}
-            </div>
+            </div> --}}
             <div class="form-group">
                 {!! Form::label('name', 'Nombre') !!}
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre', 'required' => '']) !!}
