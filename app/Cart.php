@@ -12,13 +12,12 @@ class Cart extends Model
     protected $fillable = ['customer_id', 'status', 'shipping_id', 'shipping_price', 'payment_method_id', 
     'mp_preference_id', 'mp_collection_id', 'mp_payment_type', 'mp_merchant_order_id', 
     'payment_charge', 'payment_discount', 'coupon_discount',  
-    'payment_token', 'payment_status', 'order_discount', 'anon_name', 'order_date', 'arrived_date'];
+    'payment_token', 'payment_status', 'order_discount', 'anon_name', 'order_date', 'arrived_date', 'deliver_with_no_tags'];
 
     public function items(){
     	return $this->hasMany('App\CartItem');
     }
 
-    
     public function shipping()
     {
         return $this->belongsTo('App\Shipping');

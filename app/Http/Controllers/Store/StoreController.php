@@ -371,7 +371,9 @@ class StoreController extends Controller
 
     public function processCheckout(Request $request)
     {
+        
         $cart = Cart::findOrFail($request->cart_id);  
+
 
         // Check if customer has required data completed
         if(auth()->guard('customer')->check())
@@ -389,7 +391,7 @@ class StoreController extends Controller
         // Check if customer choose payment method and shipping
         if($cart->shipping_id == null)
             return back()->withInput()->with('error', 'missing-shipping');
-        
+    
         // Proceed to set fixed prices on checkout confirmation
         foreach($cart->items as $key => $item){
             $order = CartItem::find($item->id);
@@ -434,7 +436,14 @@ class StoreController extends Controller
 
         $cart->shipping_details = $request->shipping_details;
         $cart->status = 'Process';
-    
+                
+        if ($request->deliver_with_no_tags == '1')
+        {
+            $cart->deliver_with_no_tags = 1;
+        } else {
+            $cart->deliver_with_no_tags = 0;
+        }
+        
         try {
             $cart->save();
             try

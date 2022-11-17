@@ -48,11 +48,25 @@
             {{-- {{ dd($activeCart['cartTotal'])}} --}}
         </tr>
         </table>
-        <div class="text-right finish-checkout-btn">
-            <button class="btn btn-main margin-right-none" type="submit"><i class="fas fa-check"></i> Finalizar Compra</button>
+
+        <div class="inline-checkbox">
+            <label class="form-check-label" for="checkbox-2">Quiero mis productos SIN etiqueta.</label>
+            <input onchange="setNoTagsValue(event)" value="noTags" style="height: 20px; width: 20px" id="checkbox-2" type="checkbox" aria-label="Checkbox for following text input">
+            {{-- setNoTagsValue(event) --}}
         </div>
+
+        <div class="text-right finish-checkout-btn">
+            <button class="btn btn-main margin-right-none" type="submit">
+                <i class="fas fa-check"></i> Finalizar Compra
+            </button>
+        </div>
+        
+    
+
         <button type="submit" class="btn btn-block btn-bottom mobile-finish-button main-btn">
             <i class="fas fa-check"></i> Finalizar Compra
         </button>
+
+       
     </section>
 </aside>

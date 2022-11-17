@@ -48,6 +48,10 @@
                 <p>
                     {{ transDateT($order['cart']->created_at) }}</span>
                 </p>
+                @if($order['cart']->deliver_with_no_tags == '1')
+                <span class="bordered-container"> Entregar sin etiquetas </span>
+                <div style="height: 10px"></div>
+                @endif
             @endslot
             @slot('actions')
             
@@ -60,6 +64,7 @@
                 <i class="fas fa-file-pdf"></i></a>
             <a class="icon-container black" href="{{ url('vadmin/descargar-comprobante', [$order['cart']->id, 'stream']) }}" data-toggle="tooltip" title="Ver PDF online" target="_blank">
                 <i class="fas fa-eye"></i></a>
+
             @endif
             @endslot
             @slot('tableTitles')
@@ -74,6 +79,7 @@
             @slot('tableContent')
                 @php $itemSum = 0 @endphp
                 {{-- @foreach($order->items->sortBy('name') as $item) --}}
+                
                 @foreach($order['cart']->items->sortBy('article_name') as $item)
                     @php $itemSum += $item->quantity; @endphp
                     <tr>
@@ -137,6 +143,7 @@
                             @endif
                         @endif
                     </tr>
+                    
                 @endforeach
 
                 {{-- IF CUSTOMER ORDER IS CONFIRMED/CLOSED --}}

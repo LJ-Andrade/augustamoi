@@ -9,7 +9,7 @@
 		}
 
 		.floating-bottom-cta {  
-			bottom: 70px
+			bottom: 90px
 		}
 	</style>
 @endsection
@@ -106,6 +106,10 @@
 				<br>
 			{{-- Proccess Checkout --}}
 			{!! Form::open(['id' => 'CheckoutForm', 'route' => 'store.processCheckout', 'method' => 'POST', 'class' => 'loader-on-submit']) !!}	
+
+				{{-- <input name="deliverWithNoTags" type="checkbox" id="NoTagsCheckbox" > --}}
+				<input type="number" min='0' max='1' id="DeliverWithNoTags" name="deliver_with_no_tags" value="false">
+
 				<div class="row small-form">
 					<div class="col-md-12 mb-5 form-group">
 						{{-- <label for=""></label> --}}
@@ -268,5 +272,16 @@
 				getGeoLocs(prov_id);
 			});
 		});
+
+
+		function setNoTagsValue(event)
+		{
+			if(event.target.checked) {
+				$('#DeliverWithNoTags').val(1);
+			} else {
+				$('#DeliverWithNoTags').val(0);
+			}
+		}
+
 	</script>
 @endsection

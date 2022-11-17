@@ -189,9 +189,11 @@
 							<p><b>No olvides chequear bien tu pedido antes de continuar.</b> <br>
 								Una vez que lo cierres no podremos modificar ni agregar productos
 							</p>
+						
 							<button type="button" class="UpdateDataBtn btn main-btn">Actualizar <i class="fas fa-sync-alt"></i></button>
 							<button type="button" class="SubmitDataBtn btn main-btn">Continuar <i class="fa fa-arrow-right"></i></button>
 						</div>
+						
 					</div>
 				</div>
 				<div class="back-to-store"><a href="{{ url('tienda') }}"><i class="icon-arrow-left"></i> Volver a la tienda</a></div>
