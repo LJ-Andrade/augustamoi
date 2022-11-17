@@ -27,7 +27,7 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "jquery": "^3.5.1",
-    "npm": "^6.14.7",
+    "npm": "^9.1.2",
     "sass": "^1.13.1"
   }
 }
