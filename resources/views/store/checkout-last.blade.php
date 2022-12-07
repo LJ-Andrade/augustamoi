@@ -329,10 +329,6 @@
 			}
 		}
 
-		function selectPaymentAndShippingAlert()
-		{
-			toast_error("", "Antes de continuar tenés que seleccionar un método de pago y envío", "topRight");
-		}
 
 	</script>
 @endsection

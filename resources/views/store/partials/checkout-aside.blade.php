@@ -57,7 +57,7 @@
         {{-- @if($activeCart['cart']->payment_method_id == null) --}}
         
         <div class="text-right finish-checkout-btn">
-            <button onclick="selectPaymentAndShippingAlert()" class="btn btn-main margin-right-none" type="button" onclick="checkBeforeSubmit()">
+            <button class="btn btn-main margin-right-none" type="button" onclick="checkBeforeSubmit()">
                 <i class="fas fa-check"></i> Finalizar Compra
             </button>
         </div>

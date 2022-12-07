@@ -653,7 +653,6 @@ class StoreController extends Controller
     // Check if customer has required data completed
     public function checkAndUpdateCustomerData($customerId, $data)
     {
-        dd("OK");
         $customer = Customer::findOrFail($customerId);
         
         // dd($data->all());
