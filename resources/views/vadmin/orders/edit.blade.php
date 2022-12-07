@@ -22,7 +22,6 @@
 @endsection
 
 @section('content')
-
 	<div class="inner-wrapper">
 		{!! Form::model($order, [
 				'method' => 'PATCH',

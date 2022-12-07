@@ -371,9 +371,7 @@ class StoreController extends Controller
 
     public function processCheckout(Request $request)
     {
-        
         $cart = Cart::findOrFail($request->cart_id);  
-
 
         // Check if customer has required data completed
         if(auth()->guard('customer')->check())
@@ -655,13 +653,14 @@ class StoreController extends Controller
     // Check if customer has required data completed
     public function checkAndUpdateCustomerData($customerId, $data)
     {
+        dd("OK");
         $customer = Customer::findOrFail($customerId);
         
         // dd($data->all());
         $this->validate($data,[
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
-            'username' => 'required|string|max:20|unique:customers,username,'.$customer->id,
+            // 'username' => 'required|string|max:20|unique:customers,username,'.$customer->id,
             'email' => 'required|string|email|max:255|unique:customers,email,'.$customer->id,
             'phone' => 'required|max:255',
             'address' => 'required|max:255',
@@ -669,7 +668,7 @@ class StoreController extends Controller
             'geoprov_id' => 'required|max:255',
             'geoloc_id' => 'required|max:255',
         ],[
-            'username.unique' => 'El nombre de usuario ya existe',
+            // 'username.unique' => 'El nombre de usuario ya existe',
             'email.unique' => 'El email ya existe',
             'phone.required' => 'Debe ingresar su número de teléfono',
             'addres.required' => 'Debe ingresar su dirección',

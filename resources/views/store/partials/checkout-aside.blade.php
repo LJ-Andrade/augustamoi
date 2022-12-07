@@ -54,17 +54,22 @@
             <input onchange="setNoTagsValue(event)" value="noTags" style="height: 20px; width: 20px" id="checkbox-2" type="checkbox" aria-label="Checkbox for following text input">
             {{-- setNoTagsValue(event) --}}
         </div>
-
+        {{-- @if($activeCart['cart']->payment_method_id == null) --}}
+        
         <div class="text-right finish-checkout-btn">
-            <button class="btn btn-main margin-right-none" type="submit">
+            <button onclick="selectPaymentAndShippingAlert()" class="btn btn-main margin-right-none" type="button" onclick="checkBeforeSubmit()">
                 <i class="fas fa-check"></i> Finalizar Compra
             </button>
         </div>
         
     
 
-        <button type="submit" class="btn btn-block btn-bottom mobile-finish-button main-btn">
-            <i class="fas fa-check"></i> Finalizar Compra
+        <button type="button" onclick="checkBeforeSubmit()"  @if(!$canProceed) disabled @endif  class="btn btn-block btn-bottom mobile-finish-button main-btn">
+            @if(!$canProceed) 
+                Seleccioná método de pago y envío
+            @else
+                <i class="fas fa-check"></i> Finalizar Compra
+            @endif
         </button>
 
        

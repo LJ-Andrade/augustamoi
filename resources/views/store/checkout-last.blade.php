@@ -11,11 +11,40 @@
 		.floating-bottom-cta {  
 			bottom: 90px
 		}
+
+		.iziToast-message{ 
+			line-height: 30px !important;
+
+		}
+		.iziToast-wrapper-topCenter {
+			top: 100px;
+		}
+		.iziToast-wrapper-topRight {
+			top: 130px;
+			margin-right: 20px;
+		}
+
+		
 	</style>
 @endsection
 
 
 @section('content')
+
+	@php
+		$canProceed = false;
+
+		if($activeCart['cart']->payment_method_id != null && $activeCart['cart']->shipping_id != null)
+		{
+			$canProceed = true;
+		} else 
+		{
+			$canProceed = false;
+		}
+		
+	@endphp
+
+
 	<input id="CartId" class="form-control" type="hidden" name="cart_id" value="{{ $activeCart['cart']->id }}">
 	{{--------- Checkout Error Messages ----------}}
 	{{-- Missing shipping method Message --}}
@@ -63,7 +92,7 @@
 						<div class="sub-title"> <i class="far fa-credit-card"></i> Medio de pago</div>
 						<input type="hidden" name="id" value="{{ $activeCart['cart']->id }}">
 						{{-- {!! Form::label('payment_method', 'Seleccione un medio de pago') !!} --}}
-						<select onchange="submit()" name="payment_method_id" class="Select-Atribute form-control mb-3" placeholder="Seleccionar forma de pago">
+						<select id="PaymentMethodSelector" onchange="submit()" name="payment_method_id" class="Select-Atribute form-control mb-3" placeholder="Seleccionar forma de pago">
 							@if($activeCart['cart']->payment_method_id == null)
 							<option selected disabled>Seleccione una forma de pago</option>
 							@endif
@@ -85,7 +114,7 @@
 					<div class="col-md-6">
 						<div class="sub-title"><i class="fas fa-truck"></i> Forma de envío</div>
 						{{-- {!! Form::label('shipping', 'Seleccione el tipo de envío') !!} --}}
-						<select onchange="submit()" name="shipping_id" class="Select-Atribute form-control" placeholder="Seleccionar forma de pago">
+						<select id="ShippmentMethodSelector" onchange="submit()" name="shipping_id" class="Select-Atribute form-control" placeholder="Seleccionar forma de pago">
 							@if($activeCart['cart']->shipping_id == null)
 								<option selected disabled>Seleccione forma de envío</option>
 							@endif
@@ -105,11 +134,13 @@
 				{!! Form::close() !!} 
 				<br>
 			{{-- Proccess Checkout --}}
+
+			
 			{!! Form::open(['id' => 'CheckoutForm', 'route' => 'store.processCheckout', 'method' => 'POST', 'class' => 'loader-on-submit']) !!}	
 
 				{{-- <input name="deliverWithNoTags" type="checkbox" id="NoTagsCheckbox" > --}}
-				<input type="number" min='0' max='1' id="DeliverWithNoTags" name="deliver_with_no_tags" value="false">
-
+				<input class="Hidden" type="number" min='0' max='1' id="DeliverWithNoTags" name="deliver_with_no_tags" value="false">
+				@if($canProceed) 
 				<div class="row small-form">
 					<div class="col-md-12 mb-5 form-group">
 						{{-- <label for=""></label> --}}
@@ -119,12 +150,12 @@
 					<div class="col-md-12">
 						<div class="sub-title"><i class="far fa-address-card"></i> Datos de entrega</div>
 					</div>
-					<div class="col-md-4">
+					{{-- <div class="col-md-4">
 						<div class="form-group">
 							<label>Nombre de Usuario</label>
 							<input class="form-control dson" type="text" name="username" value="{{ Auth::guard('customer')->user()->username }}" 1required>
 						</div>
-					</div>
+					</div> --}}
 					<div class="col-md-4">
 						<div class="form-group">
 							<label>Nombre</label>
@@ -143,30 +174,32 @@
 							<input class="form-control dson" type="email" name="email" value="{{ Auth::guard('customer')->user()->email }}" 1required>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group">
 							<label>Teléfono</label>
 							<input class="form-control dson" type="text" name="phone" value="{{ Auth::guard('customer')->user()->phone }}" 1required>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group">
 							<label>Teléfono 2</label>
 							<input class="form-control dson" type="text" name="phone2" value="{{ Auth::guard('customer')->user()->phone2 }}">
 						</div>
 					</div>
-					<div class="col-md-6">
+
+					<div class="col-md-8">
 						<div class="form-group">
 							<label>Dirección</label>
 							<input class="form-control dson" type="text" name="address" value="{{ Auth::guard('customer')->user()->address }}" 1required>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label>Código Postal</label>
 							<input class="form-control dson" type="text" name="cp" value="{{ Auth::guard('customer')->user()->cp }}" 1required>
 						</div>
 					</div>
+					
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Provincia</label>
@@ -202,6 +235,7 @@
 						</div>
 					@endif
 				</div><br>
+				@endif
 				<div class="row">
 					<div class="col-md-12">
 						<div class="sub-title">¿ Tenés un cupón de descuento ?</div>
@@ -281,6 +315,23 @@
 			} else {
 				$('#DeliverWithNoTags').val(0);
 			}
+		}
+
+		function checkBeforeSubmit()
+		{
+			let paymentMethodSelector = $('#PaymentMethodSelector').val();
+			let shippingMethodSelector = $('#ShippmentMethodSelector').val();
+
+			if(shippingMethodSelector == null || paymentMethodSelector == null) {
+				toast_error("", "Tenés que seleccionar un método de pago y un método de envío", "topRight");
+			} else {
+				$('#CheckoutForm').submit();
+			}
+		}
+
+		function selectPaymentAndShippingAlert()
+		{
+			toast_error("", "Antes de continuar tenés que seleccionar un método de pago y envío", "topRight");
 		}
 
 	</script>
