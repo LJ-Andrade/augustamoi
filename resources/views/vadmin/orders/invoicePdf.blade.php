@@ -28,6 +28,10 @@
                     @endif
                     <b>Teléfonos: </b> {{ $order->customer->phone }} @if($order->customer->phone2) | {{ $order->customer->phone2 }} @endif<br>
                     <b>E-mail: </b> {{ $order->customer->email }} <br>
+                    @if($order->deliver_with_no_tags == '1')
+                    <div style="height: 10px"></div>
+                    <span class="bordered-container"><b>Entregar sin etiquetas</b></span>
+                    @endif
                 </div>
                 <table class="table">
                     <thead>
