@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-add pad0">
                                 <a href="{{ url('tienda/articulo/'.$article->id) }}">
-                                    <button class="btn btn-main-sm"> Sumá a tu pedido</button>
+                                    <button class="btn btn-main-sm"> Lo Quiero</button>
                                 </a>
                             </div>
                         </div>
