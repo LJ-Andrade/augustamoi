@@ -124,7 +124,8 @@
             }
 
             .invoice-ticket .content-ticket {
-                padding: 10px
+                padding: 10px;
+                font-size: 12px
             }
 
              .invoice-ticket .invoice-ticket-table {
@@ -154,6 +155,11 @@
                 padding-top: 10px
             }
 
+
+            .invoice-ticket .align_left th,
+            .invoice-ticket .align_left td {
+                text-align: left
+            }
 
             
 </style></head><body>@yield('content')</body></html>

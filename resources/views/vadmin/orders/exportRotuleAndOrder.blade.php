@@ -94,12 +94,12 @@
             <div class="content-ticket">
                 <table class="table invoice-ticket-table">
                     <thead>
-                        <tr>
-                            <th>Cant.</th>
+                        <tr class="align_left">
+                            <th style="width: 30px">Cant.</th>
                             <th>Artículo</th>
                             <th>Talle | Color | Tela</th>
-                            <th>P.U</th>
-                            <th>Total</th>
+                            <th style="width: 100px" >P.U</th>
+                            <th style="width: 80px">Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,30 +107,30 @@
                         @foreach($order->items->sortBy('article_name') as $item)
                             @if($item->article != null)
                                 @php $itemSum += $item->quantity; @endphp
-                                <tr class="content">
+                                <tr class="content align_left">
                                     {{-- <td>#{{ $item->article->code }}</td> --}}
-                                    <td>x {{ $item->quantity }}</td>
+                                    <td style="width: 30px">x {{ $item->quantity }}</td>
                                     <td>{{ $item->article->name }} (#{{ $item->article->code }})</td>
                                     <td>
                                         {{ $item->size }} @if($item->size != '') | @endif
                                         {{ $item->color }} @if($item->color != '') | @endif
                                         {{ $item->textile }} @if($item->textile != '') @endif
                                     </td>
-                                    <td>$ {{ $item->final_price }}</td>
-                                    <td class="txtR">$ {{ number_format($item->final_price * $item->quantity, 2) }}</td>
+                                    <td style="width: 100px; ">$ {{ $item->final_price }}</td>
+                                    <td class="txtR" style="width: 80px;">$ {{ number_format($item->final_price * $item->quantity, 2) }}</td>
                                 </tr>
                             @else
                                 
                             @endif
                         @endforeach
-                        <tr class="bottom-data">
+                        <tr class="bottom-data align_left">
                             <td>x {{ $itemSum }} Artículos</td>
                             <td></td><td></td>
                             <td>Subtotal</td>
                             <td  class="txtR">$ {{ number_format($order->cartData['subTotal'], 2)  }}</td>
                         </tr>
                     {{-- Shipping --}}
-                        <tr>
+                        <tr class="align_left">
                             <td></td><td></td>
                             <td>Método de envío</td>
                             <td>
@@ -147,7 +147,7 @@
                     {{-- Payment Method --}}
 
                     @if($order->cartData['cart']->payment != null)
-                        <tr>
+                        <tr >
                             <td></td><td></td>
                             <td>Forma de pago</td>
                             <td>
@@ -188,7 +188,7 @@
                     @else
                     sin cupon
                     @endif
-                        <tr>
+                        <tr class="align_left">
                             <td></td><td></td><td></td>
                             <td><b>TOTAL</b></td>
                             <td class="txtR"><b>$ {{ number_format($order->cartData['total'],2) }}</b></td>
