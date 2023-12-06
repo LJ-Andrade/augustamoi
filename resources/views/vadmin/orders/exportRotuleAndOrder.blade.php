@@ -66,7 +66,6 @@
                 <p><b>Ciudad de Buenos Aires </b>
             </div>
         </div>
-      
 
         <div class="invoice-ticket" style="page-break-before: always">
             <div class="ticket-header">
@@ -90,12 +89,16 @@
                 @endif
                 <b>Teléfonos: </b> {{ $order->customer->phone }} @if($order->customer->phone2) | {{ $order->customer->phone2 }} @endif<br>
                 <b>E-mail: </b> {{ $order->customer->email }} <br>
+                <br>
+                @if($order->deliver_with_no_tags)
+                    <div style="display: inline-block; background-color: #ebebeb; padding: 5px 10px"> <p><b>Entregar sin etiqueta </b></p></div>
+                @endif
             </div>
             <div class="content-ticket">
                 <table class="table invoice-ticket-table">
                     <thead>
                         <tr class="align_left">
-                            <th style="width: 30px">Cant.</th>
+                            <th style="width: 20px">Cant.</th>
                             <th>Artículo</th>
                             <th>Talle | Color | Tela</th>
                             <th style="width: 100px" >P.U</th>
